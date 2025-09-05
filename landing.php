@@ -64,7 +64,8 @@ if(isset($_POST['new_event_submit'])){
     $stmt->close();
 
     // Redirect using GET after successful registration
-    header("Location: landing.php?success=" . urlencode($event_name));
+    header("Location: dashboard.php?event=" . urlencode($event_name));
+
     exit();
 }
 ?>
@@ -93,7 +94,12 @@ button:hover { background:#1b5e20;}
 </head>
 <body>
 <div class="container">
-<h2>Welcome, <?php echo $_SESSION['name']; ?>!</h2>
+<?php if(!$show_new_event_form) { ?>
+    <h2>Welcome, <?php echo $_SESSION['name']; ?>!</h2>
+<?php } else { ?>
+    <h2>Register New Event</h2>
+<?php } ?>
+
 
 <?php if($success != "") { echo "<div class='success'>$success</div>"; } ?>
 
@@ -122,6 +128,7 @@ button:hover { background:#1b5e20;}
 <?php } ?>
 
 <?php if($show_new_event_form) { ?>
+
 <form method="POST" action="">
 <input type="text" name="event_name" placeholder="Event Name" required>
 <input type="date" name="event_date" required>
@@ -160,6 +167,16 @@ function deleteEvent(evtName){
         document.getElementById('delete-form').submit();
     }
 }
+
+// ✅ Auto-hide success message after 3 seconds
+setTimeout(function(){
+    var msg = document.querySelector('.success');
+    if(msg){
+        msg.style.transition = "opacity 1s ease"; // fade-out
+        msg.style.opacity = "0";
+        setTimeout(function(){ msg.remove(); }, 1000); // remove after fade
+    }
+}, 3000);
 </script>
 </body>
 </html>
