@@ -69,9 +69,44 @@ body {
   position: relative;
   top: 30px;
 }
+
+.logout-container {
+  display: flex;
+  justify-content: flex-end; /* moves button to right */
+  align-items: center;       /* keeps vertical alignment */
+  padding: 20px;             /* adjust spacing as needed */
+}
+
+.logout-btn {
+  background-color: #dc3545;
+  color: #fff;
+  padding: 8px 18px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
 .logout-btn:hover {
   background-color: #c82333;
   color: #fff;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .logout-btn {
+    font-size: 12px;
+    padding: 12px 14px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .logout-btn {
+    font-size: 11px;
+    padding: 6px 12px;
+  }
 }
 
 /* Center content card with green gradient */
@@ -166,7 +201,7 @@ body {
 
 <!-- Banner -->
 <div class="banner">
-  <img src="Images/banner.png" alt="VMS Banner">
+  <img src="Images\banner.png" alt="VMS Banner">
   <div class="banner-content">
     <a href="logout.php" class="logout-btn">Logout</a>
   </div>
