@@ -69,7 +69,16 @@ if(isset($_POST['update-vstr'])){
 
 <?php include('include/header.php'); ?>
 <div id="wrapper">
-<?php include('include/side-bar.php'); ?>
+
+<?php
+// ✅ Role-based sidebar
+$user_role = $_SESSION['role'] ?? 'member';
+if ($user_role === 'admin') {
+    include('include\admin_side-bar.php');
+} else {
+    include('include\member_side-bar.php');
+}
+?>
 
 <div id="content-wrapper">
     <div class="container-fluid">

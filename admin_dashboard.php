@@ -27,7 +27,7 @@ $visitors = mysqli_query($conn, "SELECT * FROM tbl_visitors $where ORDER BY in_t
 <?php include('include/header.php'); ?>
 
 <div id="wrapper">
-  <?php include('include/side-bar.php'); ?>
+  <?php include('include\admin_side-bar.php'); ?>
 
   <div id="content-wrapper">
     <div class="container-fluid">
